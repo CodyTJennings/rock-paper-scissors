@@ -6,25 +6,84 @@
 </head>
     <body>
         <script>
+            /* generates a number 0 - 2 to choose rock, paper, or scissors for computer */
             function computerPlay(){
                 let randNum = Math.floor(Math.random() * 3);
                 let computerChoice;
                 switch (randNum) {
                     case 0:
-                    computerChoice = "Rock";
+                    computerChoice = "rock";
                     break;
                     case 1:
-                    computerChoice =  "Paper";
+                    computerChoice =  "paper";
                     break;
                     case 2: 
-                    computerChoice =  "Scissors";
+                    computerChoice =  "scissors";
                     break;
                 }
                 return computerChoice;
                 
             }
 
-            console.log(computerPlay());
+            function playRound(playerSelection, computerSelection) {
+                /* compares playerSelection and computerSelection to set the result */
+                playerSelection = playerSelection.toLowerCase();
+                let result;
+                if (playerSelection === "rock") {
+                    if (computerSelection === "rock") {
+                        result = "tie";
+                    }
+                    else if (computerSelection === "paper") {
+                        result = "lose";
+                    }
+                    else if (computerSelection === "scissors") {
+                        result = "win";
+                    }
+                }
+                else if (playerSelection === "paper") {
+                    if (computerSelection === "rock") {
+                        result = "win";
+                    }
+                    else if (computerSelection === "paper") {
+                        result = "tie";
+                    }
+                    else if (computerSelection === "scissors") {
+                        result = "lose";
+                    }
+                }
+                else if (playerSelection === "scissors") {
+                    if (computerSelection === "rock") {
+                        result = "lose";
+                    }
+                    else if (computerSelection === "paper") {
+                        result = "win";
+                    }
+                    else if (computerSelection === "scissors") {
+                        result = "tie";
+                    }
+                }
+
+                /* sets message differently based on result */
+
+                let message;
+                switch (result) {
+                    case "win":
+                    message = "You win! " + playerSelection + " beats " + computerSelection;
+                    break;
+                    case "lose":
+                    message = "You lose! " + playerSelection + " loses to " + computerSelection;
+                    break;
+                    case "tie":
+                    message = "You tie! " + playerSelection + " ties with " + computerSelection;
+                    break;
+                }
+
+                return message;
+
+            }
+            let playerChoice = window.prompt("Choose Rock, Paper, or Scissors");
+            let roundResult = playRound(playerChoice, computerPlay());
+            console.log(roundResult);
         </script>
     </body>
     </html>
