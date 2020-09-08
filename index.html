@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8" />
+</head>
+    <body>
+        <script>
+            function computerPlay(){
+                let randNum = Math.floor(Math.random() * 3);
+                let computerChoice;
+                switch (randNum) {
+                    case 0:
+                    computerChoice = "Rock";
+                    break;
+                    case 1:
+                    computerChoice =  "Paper";
+                    break;
+                    case 2: 
+                    computerChoice =  "Scissors";
+                    break;
+                }
+                return computerChoice;
+                
+            }
+
+            console.log(computerPlay());
+        </script>
+    </body>
+    </html>
