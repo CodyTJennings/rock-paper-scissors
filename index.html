@@ -6,6 +6,10 @@
 </head>
     <body>
         <script>
+            let wins = 0;
+            let losses = 0;
+            let totalGames;
+
             /* generates a number 0 - 2 to choose rock, paper, or scissors for computer */
             function computerPlay(){
                 let randNum = Math.floor(Math.random() * 3);
@@ -63,15 +67,17 @@
                     }
                 }
 
-                /* sets message differently based on result */
+                /* sets message differently based on result, and increments wins and losses*/
 
                 let message;
                 switch (result) {
                     case "win":
                     message = "You win! " + playerSelection + " beats " + computerSelection;
+                    wins++;
                     break;
                     case "lose":
                     message = "You lose! " + playerSelection + " loses to " + computerSelection;
+                    losses++;
                     break;
                     case "tie":
                     message = "You tie! " + playerSelection + " ties with " + computerSelection;
@@ -81,9 +87,27 @@
                 return message;
 
             }
-            let playerChoice = window.prompt("Choose Rock, Paper, or Scissors");
-            let roundResult = playRound(playerChoice, computerPlay());
-            console.log(roundResult);
+
+            function game() {
+                /* asks for playerChoice and then acquires round result by calling playRound */
+                let playerChoice = window.prompt("Choose Rock, Paper, or Scissors");
+                let roundResult = playRound(playerChoice, computerPlay());
+                console.log(roundResult);
+                totalGames = wins + losses;
+            }
+
+            for (totalGames = 0; totalGames < 5;) {
+                /* loops the game function until wins and losses total 5 */
+                game();
+            }
+
+            if (wins > losses) {
+                console.log("You won the best out of 5!");
+            }
+            else {
+                console.log("You lost the best out of 5.");
+            }
+            
         </script>
     </body>
     </html>
